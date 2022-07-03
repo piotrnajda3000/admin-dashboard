@@ -6,4 +6,4 @@
 
 Design to implement: ![](design/design_brief.png)
 
-Implemented design: ![](design/implemented.png)
+Implemented design: ![](design/web_implementation.png)
