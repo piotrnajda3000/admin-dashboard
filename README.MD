@@ -1,4 +1,4 @@
-# Landing Page
+# Admin dashboard
 
 ## _[View the site](https://piotrnajda3000.github.io/admin-dashboard/)_
 
