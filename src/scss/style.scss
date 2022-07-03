@@ -1,65 +1,115 @@
 @forward "globals";
 
-@mixin horizontal-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+@import "~@mdi/font/css/materialdesignicons.min.css";
 
 @mixin icon($side: 24px) {
-  width: $side;
-  height: $side;
-  background: white;
+  font-size: $side;
 }
 
-@mixin avatar() {
-  @include icon;
-  background: grey;
+@mixin horizontal-item($gap: 8px) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin avatar($size: 40px) {
+  width: $size;
+  height: $size;
+
+  background: url("../assets/profilePic.jpg");
+  background-size: cover;
+  object-fit: cover;
+
   border-radius: 50%;
-}
-
-html,
-body {
-  height: 100%;
 }
 
 body {
   display: grid;
   grid-template-columns: minmax(min-content, 250px) auto;
-  grid-template-rows: 180px auto;
-  background: hsl(255, 3%, 96%);
+  grid-template-rows: min-content auto;
+
+  background: hsl(215, 50%, 96%);
 }
+
+// Sidebar
 
 .sidebar {
   grid-row: 1 / -1;
 
   display: grid;
   grid-auto-rows: min-content;
-  gap: 50px;
+  gap: 32px;
 
   padding-inline: 24px;
 
-  background: white;
-  z-index: 2;
-  // background: #3839e0;
+  color: hsl(0, 0%, 96%);
+
+  background: hsl(215, 91%, 50%);
+  font-weight: 400;
+  font-size: 20px;
+
+  z-index: 2; // to be above box shadow of header
 }
+
+.logo {
+  @include horizontal-item(0px);
+  color: white;
+
+  padding-top: 32px;
+
+  &__image {
+    @include icon(36px);
+  }
+
+  &__text {
+    font-weight: 800;
+    font-size: 24px;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 16px;
+
+  &__item {
+    @include horizontal-item();
+  }
+
+  &__icon {
+    font-weight: 600;
+    @include icon(24px);
+  }
+}
+
+// Header
 
 .header {
   display: grid;
-  gap: 8px;
   align-items: center;
+  gap: 32px;
+
   background: white;
 
   &__top {
     display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
     align-items: center;
-    grid-template-columns: 2fr 1fr;
+  }
+
+  &__top-right {
+    @include horizontal-item(24px);
+
+    grid-area: 1 / 2 / 1 / -1;
+    justify-content: flex-end;
   }
 
   &__bottom {
     display: grid;
-    gap: 8px;
     grid-template-columns: auto auto;
+    gap: 24px;
   }
 
   /* elevation / ultralight */
@@ -68,43 +118,104 @@ body {
 
   &__notification-bell {
     @include icon();
-    background: grey;
+    color: hsl(215, 50%, 16%);
   }
 
-  padding: 24px;
-
-  &__top-right {
-    grid-area: 1 / 2 / 1 / -1;
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-  }
+  padding: 32px clamp(8px, 3%, 32px);
 }
 
-.profile-info {
+.search {
   @include horizontal-item();
 
-  &__avatar {
-    @include avatar;
+  &__icon {
+    @include icon();
+    color: hsl(215, 50%, 16%);
+  }
+  &__bar {
+    flex: 1;
+
+    height: 32px;
+
+    max-width: 100%;
+
+    border: 1px solid hsl(215, 16%, 90%);
+
+    background: hsl(215, 16%, 96%);
+    border-radius: 16px;
   }
 }
 
-.big-profile-info {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 64px auto;
-  gap: 8px;
-  &__avatar {
-    align-self: end;
-    @include avatar;
-    width: 64px;
-    height: 64px;
-    grid-row: 1 / -1;
+// Profile info
+
+.profile-info {
+  &--horizontal {
+    @include horizontal-item(16px);
+    &__avatar {
+      @include avatar;
+    }
+    &__name {
+      font-weight: 500;
+      color: hsl(0, 0%, 16%);
+    }
   }
-  &__greeting {
-    align-self: end;
+  &--vertical {
+    display: grid;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+
+    &__avatar {
+      grid-row: 1 / -1;
+      align-self: end;
+    }
+
+    &__topText {
+      align-self: end;
+    }
+
+    // Small
+
+    &.small {
+      grid-template-columns: 40px auto;
+      row-gap: 4px;
+    }
+
+    &.small &__avatar {
+      @include avatar();
+      align-self: center;
+    }
+
+    &.small &__topText,
+    &.small &__bottomText {
+      font-size: 14px;
+    }
+
+    &.small &__topText {
+      font-weight: 500;
+    }
+
+    &.small &__bottomText {
+      color: hsl(0, 0%, 8%);
+    }
+
+    // Big
+
+    &.big {
+      grid-template-columns: 64px auto;
+    }
+
+    &.big &__avatar {
+      @include avatar(64px);
+    }
+
+    &.big &__bottomText {
+      font-size: 24px;
+      font-weight: 500;
+      color: hsl(0, 0%, 16%);
+    }
   }
 }
+
+// End profile info
 
 .project-options {
   align-self: end;
@@ -113,8 +224,10 @@ body {
   &__button {
     padding-block: 8px;
     padding-inline: 24px;
-    border: 1px solid black;
     border-radius: 16px;
+    font-weight: 500;
+    background: var(--accent);
+    color: white;
   }
 }
 
@@ -130,49 +243,10 @@ body {
   padding: 24px;
 
   &__right {
-    align-self: stretch;
+    align-self: start;
+    align-items: start;
     display: grid;
     gap: 24px;
-    grid-template-rows: 1fr 1fr;
-  }
-}
-
-.search {
-  max-width: 75ch;
-  @include horizontal-item();
-  &__icon {
-    @include icon();
-    background: grey;
-  }
-  &__bar {
-    background: hsl(255, 0%, 96%);
-    height: 32px;
-    flex: 1;
-    border-radius: 8px;
-  }
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  &__item {
-    @include horizontal-item();
-  }
-
-  &__icon {
-    @include icon();
-  }
-}
-
-.logo {
-  @include horizontal-item();
-
-  padding-top: 24px;
-
-  &__image {
-    @include icon(36px);
   }
 }
 
@@ -182,7 +256,7 @@ body {
   grid-template-rows: min-content 1fr;
 
   &__heading {
-    font-weight: bold;
+    font-weight: 500;
     font-size: 20px;
   }
 
@@ -200,15 +274,19 @@ body {
   max-width: 60ch;
 
   background: white;
-  border-left: inset 8px black;
+  border-left: solid 8px #eb0052;
   border-radius: 8px;
 
-  padding: 32px 24px;
+  padding: 24px 24px;
 
   &__heading {
     padding-bottom: 4px;
     font-weight: bold;
     font-size: 18px;
+  }
+
+  &__text {
+    color: hsl(0, 0%, 8%);
   }
 
   .icons {
@@ -217,6 +295,7 @@ body {
     gap: 12px;
     &__icon {
       @include icon();
+      font-size: 20px;
     }
   }
 
@@ -228,17 +307,23 @@ body {
 
 .announcements,
 .trending {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+
+  grid-template-rows: min-content min-content;
 
   gap: 16px;
 
   &__heading {
-    font-weight: bold;
+    font-weight: 500;
     font-size: 20px;
   }
-  &__card {
-    flex: 1;
+  &__cards {
+    padding: 32px clamp(8px, 8%, 24px);
+
+    display: grid;
+    gap: 24px;
+    grid-template-rows: 1fr 1fr 1fr;
+
     background: white;
     border-radius: 8px;
 
@@ -246,4 +331,28 @@ body {
     box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.1),
       0px 12px 32px rgba(0, 0, 0, 0.05);
   }
+}
+
+.announcement {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  align-self: center;
+
+  &__heading {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: hsl(0, 0%, 8%);
+  }
+}
+
+.announcement:nth-child(even) {
+  border-bottom: 1px solid hsl(0, 0%, 85%);
+  border-top: 1px solid hsl(0, 0%, 85%);
+  padding-block: 24px;
 }
