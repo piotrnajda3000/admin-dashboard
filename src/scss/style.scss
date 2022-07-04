@@ -2,17 +2,17 @@
 
 @import "~@mdi/font/css/materialdesignicons.min.css";
 
-@mixin icon($side: 24px) {
+@mixin icon($side: var(--fontSize-150)) {
   font-size: $side;
 }
 
-@mixin horizontal-item($gap: 8px) {
+@mixin horizontal-item($gap: var(--space-100)) {
   display: flex;
   align-items: center;
   gap: $gap;
 }
 
-@mixin avatar($size: 45px) {
+@mixin avatar($size: var(--space-500)) {
   width: $size;
   height: $size;
 
@@ -48,15 +48,15 @@ body {
 
   display: grid;
   grid-auto-rows: min-content;
-  gap: 32px;
+  gap: var(--space-400);
 
-  padding-inline: 24px;
+  padding-inline: var(--space-300);
 
-  background: hsl(215, 91%, 50%);
+  background: var(--primary);
   color: var(--white-muted-50);
 
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: var(--fontWeight-1);
+  font-size: var(--fontSize-125);
 
   z-index: 2; // to be above box shadow of header
 }
@@ -65,27 +65,27 @@ body {
   @include horizontal-item(0px);
   color: white;
 
-  padding-top: 32px;
+  padding-top: var(--space-400);
 
   &__text {
-    font-weight: 800;
-    font-size: 24px;
+    font-weight: var(--fontWeight-40);
+    font-size: var(--fontSize-150);
   }
 }
 
 .menu {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-bottom: 16px;
+  gap: var(--space-300);
+  margin-bottom: var(--space-200);
 
   &__item {
     @include horizontal-item();
   }
 
   &__icon {
-    font-weight: 600;
-    @include icon(24px);
+    font-weight: var(--fontWeight-30);
+    @include icon(var(--fontSize-150));
   }
 }
 
@@ -94,18 +94,18 @@ body {
 .header {
   display: grid;
   align-items: center;
-  gap: 32px;
+  gap: var(--space-400);
 
   background: var(--white-highlight);
   &__top {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 24px;
+    gap: var(--space-300);
     align-items: center;
   }
 
   &__top-right {
-    @include horizontal-item(24px);
+    @include horizontal-item(var(--space-300));
 
     grid-area: 1 / 2 / 1 / -1;
     justify-content: flex-end;
@@ -114,7 +114,7 @@ body {
   &__bottom {
     display: grid;
     grid-template-columns: auto auto;
-    gap: 24px;
+    gap: var(--space-300);
   }
 
   @include elevation--ultra-light();
@@ -124,7 +124,7 @@ body {
     color: var(--icons-dark);
   }
 
-  padding: 32px clamp(8px, 3%, 32px);
+  padding: var(--space-400) clamp(var(--space-100), 3%, var(--space-400));
 }
 
 .search {
@@ -137,7 +137,7 @@ body {
   &__bar {
     flex: 1;
 
-    height: 32px;
+    height: var(--space-400);
 
     max-width: 100%;
 
@@ -150,12 +150,12 @@ body {
 
 .profile-info {
   &--horizontal {
-    @include horizontal-item(16px);
+    @include horizontal-item(var(--space-200));
     &__avatar {
       @include avatar;
     }
     &__name {
-      font-weight: 500;
+      font-weight: var(--fontWeight-25);
       color: var(--icons-dark);
     }
   }
@@ -175,9 +175,9 @@ body {
     // Small
 
     &.small {
-      grid-template-columns: 45px auto;
-      row-gap: 4px;
-      column-gap: 8px;
+      grid-template-columns: var(--space-500) auto;
+      row-gap: var(--space-50);
+      column-gap: var(--space-100);
     }
 
     &.small &__avatar {
@@ -187,11 +187,11 @@ body {
 
     &.small &__topText,
     &.small &__bottomText {
-      font-size: 14px;
+      font-size: var(--fontSize-50);
     }
 
     &.small &__topText {
-      font-weight: 500;
+      font-weight: var(--fontWeight-25);
     }
 
     &.small &__bottomText {
@@ -202,7 +202,7 @@ body {
 
     &.big {
       grid-template-columns: 64px auto;
-      column-gap: 16px;
+      column-gap: var(--space-200);
     }
 
     &.big &__avatar {
@@ -210,8 +210,8 @@ body {
     }
 
     &.big &__bottomText {
-      font-size: 24px;
-      font-weight: 500;
+      font-size: var(--fontSize-150);
+      font-weight: var(--fontWeight-25);
       color: var(--dark-muted);
     }
   }
@@ -224,10 +224,10 @@ body {
   justify-self: end;
   @include horizontal-item();
   &__button {
-    padding-block: 8px;
-    padding-inline: 24px;
+    padding-block: var(--space-100);
+    padding-inline: var(--space-300);
     border-radius: 16px;
-    font-weight: 500;
+    font-weight: var(--fontWeight-25);
     background: var(--accent);
     color: var(--white-highlight);
   }
@@ -238,35 +238,35 @@ body {
   grid-template-columns: auto minmax(200px, 300px);
   height: min-content;
 
-  gap: 24px;
+  gap: var(--space-300);
 
   position: relative;
   z-index: -1; // for box shadow of header
 
-  padding: 24px;
+  padding: var(--space-300);
 
   &__right {
     grid-template-rows: auto auto;
     align-self: start;
     align-items: start;
     display: grid;
-    gap: 24px;
+    gap: var(--space-300);
   }
 }
 
 .projects {
   display: grid;
-  gap: 16px;
+  gap: var(--space-200);
   grid-template-rows: min-content 1fr;
 
   &__heading {
     font-weight: 500;
-    font-size: 20px;
+    font-size: var(--fontSize-125);
   }
 
   &__cards {
     display: grid;
-    gap: 24px;
+    gap: var(--space-300);
     grid-template-rows: repeat(auto-fit, minmax(min-content, 250px));
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
@@ -274,7 +274,7 @@ body {
 
 .card {
   display: grid;
-  gap: 24px;
+  gap: var(--space-300);
 
   max-width: 60ch;
 
@@ -282,12 +282,12 @@ body {
   border-left: solid 8px var(--accent);
   border-radius: 8px;
 
-  padding: 24px 24px;
+  padding: var(--space-300) var(--space-300);
 
   &__heading {
-    padding-bottom: 4px;
+    padding-bottom: var(--space-50);
     font-weight: bold;
-    font-size: 18px;
+    font-size: var(--fontSize-112);
   }
 
   &__text {
@@ -297,10 +297,10 @@ body {
   .icons {
     justify-self: end;
     @include horizontal-item();
-    gap: 12px;
+    gap: var(--space-150);
     &__icon {
       @include icon();
-      font-size: 20px;
+      font-size: var(--fontSize-125);
       color: var(--icons-dark);
     }
   }
@@ -314,17 +314,17 @@ body {
 
   grid-template-rows: min-content min-content;
 
-  gap: 16px;
+  gap: var(--space-200);
 
   &__heading {
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: var(--fontWeight-25);
+    font-size: var(--fontSize-125);
   }
   &__cards {
-    padding: 32px clamp(8px, 8%, 24px);
+    padding: var(--space-400) clamp(var(--space-100), 8%, var(--space-300));
 
     display: grid;
-    gap: 24px;
+    gap: var(--space-300);
     grid-template-rows: 1fr 1fr 1fr;
 
     background: var(--white-highlight);
@@ -337,17 +337,17 @@ body {
 .announcement {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-50);
 
   align-self: center;
 
   &__heading {
-    font-weight: 700;
+    font-weight: var(--fontWeight-35);
     font-size: 16px;
   }
 
   &__text {
-    font-size: 14px;
+    font-size: var(--fontSize-50);
     color: var(--dark-muted-40);
   }
 }
@@ -355,5 +355,5 @@ body {
 .announcement:nth-child(even) {
   border-bottom: 1px solid var(--white-muted-150);
   border-top: 1px solid var(--white-muted-150);
-  padding-block: 24px;
+  padding-block: var(--space-300);
 }
