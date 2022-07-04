@@ -1,3 +1,14 @@
 :root {
-  --accent: #eb0052;
+  --primary: hsl(215, 91%, 50%);
+  --accent: hsl(339, 100%, 46%);
+
+  --icons-dark: hsl(215, 50%, 16%);
+
+  --dark-muted-40: hsl(0, 0%, 8%);
+  --dark-muted: hsl(0, 0%, 16%);
+
+  --white-muted-50: hsl(215, 16%, 96%);
+  --white-muted-100: hsl(215, 50%, 96%);
+  --white-muted-150: hsl(215, 16%, 85%);
+  --white-highlight: hsl(0, 0%, 100%);
 }

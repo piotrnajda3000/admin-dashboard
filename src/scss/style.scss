@@ -23,12 +23,22 @@
   border-radius: 50%;
 }
 
+@mixin elevation--ultra-light() {
+  box-shadow: 0px 2px 2px rgba(28, 5, 77, 0.05),
+    0px 12px 8px rgba(0, 0, 0, 0.02);
+}
+
+@mixin elevation--light() {
+  box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.1),
+    0px 12px 32px rgba(0, 0, 0, 0.05);
+}
+
 body {
   display: grid;
   grid-template-columns: minmax(min-content, 250px) auto;
   grid-template-rows: min-content auto;
 
-  background: hsl(215, 50%, 96%);
+  background: var(--white-muted-100);
 }
 
 // Sidebar
@@ -42,9 +52,9 @@ body {
 
   padding-inline: 24px;
 
-  color: hsl(0, 0%, 96%);
-
   background: hsl(215, 91%, 50%);
+  color: var(--white-muted-50);
+
   font-weight: 400;
   font-size: 20px;
 
@@ -90,8 +100,7 @@ body {
   align-items: center;
   gap: 32px;
 
-  background: white;
-
+  background: var(--white-highlight);
   &__top {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -112,13 +121,11 @@ body {
     gap: 24px;
   }
 
-  /* elevation / ultralight */
-  box-shadow: 0px 2px 2px rgba(28, 5, 77, 0.05),
-    0px 12px 8px rgba(0, 0, 0, 0.02);
+  @include elevation--ultra-light();
 
   &__notification-bell {
     @include icon();
-    color: hsl(215, 50%, 16%);
+    color: var(--icons-dark);
   }
 
   padding: 32px clamp(8px, 3%, 32px);
@@ -129,7 +136,7 @@ body {
 
   &__icon {
     @include icon();
-    color: hsl(215, 50%, 16%);
+    color: var(--icons-dark);
   }
   &__bar {
     flex: 1;
@@ -138,7 +145,7 @@ body {
 
     max-width: 100%;
 
-    background: hsl(215, 16%, 96%);
+    background: var(--white-muted-50);
     border-radius: 16px;
   }
 }
@@ -153,7 +160,7 @@ body {
     }
     &__name {
       font-weight: 500;
-      color: hsl(0, 0%, 16%);
+      color: var(--icons-dark);
     }
   }
   &--vertical {
@@ -192,7 +199,7 @@ body {
     }
 
     &.small &__bottomText {
-      color: hsl(0, 0%, 8%);
+      color: var(--dark-muted);
     }
 
     // Big
@@ -208,7 +215,7 @@ body {
     &.big &__bottomText {
       font-size: 24px;
       font-weight: 500;
-      color: hsl(0, 0%, 16%);
+      color: var(--dark-muted);
     }
   }
 }
@@ -225,7 +232,7 @@ body {
     border-radius: 16px;
     font-weight: 500;
     background: var(--accent);
-    color: white;
+    color: var(--white-highlight);
   }
 }
 
@@ -274,8 +281,8 @@ body {
 
   max-width: 60ch;
 
-  background: white;
-  border-left: solid 8px #eb0052;
+  background: var(--white-highlight);
+  border-left: solid 8px var(--accent);
   border-radius: 8px;
 
   padding: 24px 24px;
@@ -287,7 +294,7 @@ body {
   }
 
   &__text {
-    color: hsl(0, 0%, 8%);
+    color: var(--dark-muted-40);
   }
 
   .icons {
@@ -297,13 +304,11 @@ body {
     &__icon {
       @include icon();
       font-size: 20px;
+      color: var(--icons-dark);
     }
   }
 
-  /* elevation / light */
-
-  box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.1),
-    0px 12px 32px rgba(0, 0, 0, 0.05);
+  @include elevation--light();
 }
 
 .announcements,
@@ -325,12 +330,10 @@ body {
     gap: 24px;
     grid-template-rows: 1fr 1fr 1fr;
 
-    background: white;
+    background: var(--white-highlight);
     border-radius: 8px;
 
-    /* elevation / light */
-    box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.1),
-      0px 12px 32px rgba(0, 0, 0, 0.05);
+    @include elevation--light();
   }
 }
 
@@ -348,12 +351,12 @@ body {
 
   &__text {
     font-size: 14px;
-    color: hsl(0, 0%, 8%);
+    color: var(--dark-muted-40);
   }
 }
 
 .announcement:nth-child(even) {
-  border-bottom: 1px solid hsl(0, 0%, 85%);
-  border-top: 1px solid hsl(0, 0%, 85%);
+  border-bottom: 1px solid var(--white-muted-150);
+  border-top: 1px solid var(--white-muted-150);
   padding-block: 24px;
 }
