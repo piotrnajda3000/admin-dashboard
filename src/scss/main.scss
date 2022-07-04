@@ -1,0 +1,17 @@
+@use "globals" as *;
+
+@use "layouts/header";
+@use "layouts/sidebar";
+@use "layouts/main-content";
+
+@use "components/profile-info";
+
+@import "~@mdi/font/css/materialdesignicons.min.css";
+
+body {
+  display: grid;
+  grid-template-columns: minmax(min-content, 250px) auto;
+  grid-template-rows: min-content auto;
+
+  background: var(--white-muted-100);
+}

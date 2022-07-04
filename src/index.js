@@ -1,4 +1,10 @@
-import "./scss/style.scss";
+import "./scss/main.scss";
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+/* Add some avatars to fake people */
 
 const [...avatars] = document.querySelectorAll("[data-id]");
 
@@ -13,7 +19,3 @@ avatars.forEach((avatar) => {
   avatar.src = profilePics[count];
   count++;
 });
-
-if (module.hot) {
-  module.hot.accept();
-}

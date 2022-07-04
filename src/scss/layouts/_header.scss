@@ -1,0 +1,73 @@
+@use "../globals" as *;
+
+.header {
+  display: grid;
+  align-items: center;
+  gap: var(--space-400);
+
+  background: var(--white-highlight);
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-300);
+    align-items: center;
+  }
+
+  &__top-right {
+    @include horizontal-item(var(--space-300));
+
+    grid-area: 1 / 2 / 1 / -1;
+    justify-content: flex-end;
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: var(--space-300);
+  }
+
+  &__notification-bell {
+    @include icon();
+    color: var(--icons-dark);
+  }
+
+  padding: var(--space-400) clamp(var(--space-100), 3%, var(--space-400));
+
+  @include elevation--ultra-light();
+}
+
+.search {
+  @include horizontal-item();
+
+  &__icon {
+    @include icon();
+    color: var(--icons-dark);
+  }
+  &__bar {
+    flex: 1;
+
+    height: var(--space-400);
+
+    max-width: 100%;
+
+    background: var(--white-muted-50);
+    border-radius: 16px;
+  }
+}
+
+// Project options
+
+.project-options {
+  align-self: end;
+  justify-self: end;
+  @include horizontal-item();
+  &__button {
+    padding-block: var(--space-100);
+    padding-inline: var(--space-300);
+    border-radius: 16px;
+    font-weight: var(--fontWeight-25);
+    background: var(--accent);
+    color: var(--white-highlight);
+  }
+}

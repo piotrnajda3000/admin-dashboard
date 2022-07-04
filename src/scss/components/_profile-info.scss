@@ -1,0 +1,65 @@
+@use "../globals" as *;
+
+.profile-info-horizontal {
+  @include horizontal-item(var(--space-200));
+  &__avatar {
+    @include avatar;
+  }
+  &__name {
+    font-weight: var(--fontWeight-25);
+    color: var(--icons-dark);
+  }
+}
+
+.profile-info-vertical {
+  display: grid;
+  grid-template-rows: auto auto;
+
+  .avatar {
+    grid-row: 1 / -1;
+    align-self: end;
+  }
+
+  .topText {
+    align-self: end;
+  }
+}
+
+.small {
+  grid-template-columns: var(--space-500) auto;
+  row-gap: var(--space-50);
+  column-gap: var(--space-100);
+
+  .avatar {
+    @include avatar();
+    align-self: center;
+  }
+
+  .topText,
+  .bottomText {
+    font-size: var(--fontSize-50);
+  }
+
+  .topText {
+    font-weight: var(--fontWeight-25);
+  }
+
+  .bottomText {
+    color: var(--dark-muted);
+  }
+}
+
+.big {
+  grid-template-columns: 64px auto;
+  column-gap: var(--space-200);
+
+  .avatar {
+    @include avatar(64px);
+  }
+
+  .bottomText {
+    font-size: var(--fontSize-150);
+    font-weight: var(--fontWeight-25);
+    color: var(--dark-muted);
+  }
+}

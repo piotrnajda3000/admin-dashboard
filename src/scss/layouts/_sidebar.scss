@@ -1,0 +1,47 @@
+@use "../globals" as *;
+
+.sidebar {
+  grid-row: 1 / -1;
+
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: var(--space-400);
+
+  padding-inline: var(--space-300);
+
+  background: var(--primary);
+  color: var(--white-muted-50);
+
+  font-weight: var(--fontWeight-1);
+  font-size: var(--fontSize-125);
+
+  z-index: 2; // to be above box shadow of header
+}
+
+.logo {
+  @include horizontal-item(0px);
+  color: white;
+
+  padding-top: var(--space-400);
+
+  &__text {
+    font-weight: var(--fontWeight-40);
+    font-size: var(--fontSize-150);
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-300);
+  margin-bottom: var(--space-200);
+
+  &__item {
+    @include horizontal-item();
+  }
+
+  &__icon {
+    font-weight: var(--fontWeight-30);
+    @include icon(var(--fontSize-150));
+  }
+}

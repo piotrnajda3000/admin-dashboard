@@ -1,0 +1,26 @@
+@forward "announcements";
+@forward "projects";
+
+@use "../../globals" as *;
+
+.main-content {
+  display: grid;
+  grid-template-columns: auto minmax(200px, 300px);
+  height: min-content;
+
+  gap: var(--space-300);
+
+  position: relative;
+  z-index: -1; // for box shadow of header
+
+  padding: var(--space-300);
+
+  &__right {
+    align-self: start;
+    align-items: start;
+
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: var(--space-300);
+  }
+}

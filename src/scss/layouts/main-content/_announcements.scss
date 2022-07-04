@@ -1,0 +1,49 @@
+@use "../../globals" as *;
+
+.announcements,
+.trending {
+  display: grid;
+  gap: var(--space-200);
+
+  &__heading {
+    font-weight: var(--fontWeight-25);
+    font-size: var(--fontSize-125);
+  }
+  &__cards {
+    padding: var(--space-400) clamp(var(--space-100), 8%, var(--space-300));
+
+    display: grid;
+    gap: var(--space-300);
+    grid-template-rows: 1fr 1fr 1fr;
+
+    background: var(--white-highlight);
+    border-radius: 8px;
+
+    @include elevation--light();
+  }
+}
+
+.announcement {
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-50);
+
+  &__heading {
+    font-weight: var(--fontWeight-35);
+    font-size: 16px;
+  }
+
+  &__text {
+    font-size: var(--fontSize-50);
+    color: var(--dark-muted-40);
+  }
+}
+
+.announcement:nth-child(even) {
+  border-bottom: 1px solid var(--white-muted-150);
+  border-top: 1px solid var(--white-muted-150);
+
+  padding-block: var(--space-300);
+}
