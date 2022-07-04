@@ -12,7 +12,7 @@
   gap: $gap;
 }
 
-@mixin avatar($size: 40px) {
+@mixin avatar($size: 45px) {
   width: $size;
   height: $size;
 
@@ -66,10 +66,6 @@ body {
   color: white;
 
   padding-top: 32px;
-
-  &__image {
-    @include icon(36px);
-  }
 
   &__text {
     font-weight: 800;
@@ -166,7 +162,6 @@ body {
   &--vertical {
     display: grid;
     grid-template-rows: auto auto;
-    column-gap: 16px;
 
     &__avatar {
       grid-row: 1 / -1;
@@ -180,8 +175,9 @@ body {
     // Small
 
     &.small {
-      grid-template-columns: 40px auto;
+      grid-template-columns: 45px auto;
       row-gap: 4px;
+      column-gap: 8px;
     }
 
     &.small &__avatar {
@@ -206,6 +202,7 @@ body {
 
     &.big {
       grid-template-columns: 64px auto;
+      column-gap: 16px;
     }
 
     &.big &__avatar {
