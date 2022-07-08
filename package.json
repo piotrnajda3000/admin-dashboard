@@ -2,6 +2,7 @@
   "name": "admin-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://piotrnajda3000.github.io/admin-dashboard",
   "dependencies": {
     "@dr.pogodin/babel-plugin-react-css-modules": "^6.8.2",
     "@mdi/js": "^6.9.96",
