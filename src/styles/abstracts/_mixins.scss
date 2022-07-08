@@ -1,0 +1,25 @@
+@mixin horizontal-item($gap: var(--space-2)) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin elevation--ultra-light() {
+  box-shadow: 0px 2px 2px rgba(28, 5, 77, 0.05),
+    0px 12px 8px rgba(0, 0, 0, 0.02);
+}
+
+@mixin elevation--light() {
+  box-shadow: 0px 2px 4px rgba(28, 5, 77, 0.1),
+    0px 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+@mixin avatar($size: var(--space-7)) {
+  width: $size;
+  height: $size;
+
+  background-size: cover;
+  object-fit: cover;
+
+  border-radius: 50%;
+}

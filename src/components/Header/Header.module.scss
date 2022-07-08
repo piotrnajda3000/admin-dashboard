@@ -1,0 +1,62 @@
+@use "../../styles/main.scss" as *;
+
+.header {
+  display: grid;
+  align-items: center;
+  gap: var(--space-6);
+
+  background: var(--white-highlight);
+
+  padding: var(--space-6) clamp(var(--space-2), 3%, var(--space-6));
+
+  @include elevation--ultra-light();
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.topRight {
+  @include horizontal-item(var(--space-5));
+  justify-content: flex-end;
+}
+
+.bottom {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--space-5);
+}
+
+.search {
+  @include horizontal-item();
+
+  &__bar {
+    flex: 1;
+    padding-inline: 16px;
+    outline: none;
+    color: var(--dark-muted-2);
+
+    height: var(--space-6);
+
+    background: var(--white-muted-1);
+    border-radius: 16px;
+  }
+}
+
+.projectOptions {
+  align-self: end;
+  justify-self: end;
+  @include horizontal-item();
+}
+
+.button {
+  padding-block: var(--space-2);
+  padding-inline: var(--space-5);
+  border-radius: 16px;
+  font-weight: var(--fontWeight-3);
+  background: var(--accent);
+  color: var(--white-highlight);
+}

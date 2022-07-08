@@ -1,0 +1,43 @@
+@use "../../../styles/main.scss" as *;
+
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.cards {
+  padding: var(--space-6) clamp(var(--space-2), 8%, var(--space-5));
+
+  display: grid;
+  gap: var(--space-5);
+  grid-auto-rows: min-content;
+
+  background: var(--white-highlight);
+  border-radius: 8px;
+
+  @include elevation--light();
+}
+
+.Announcement {
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  &:nth-child(even) {
+    border-bottom: 1px solid var(--white-muted-3);
+    border-top: 1px solid var(--white-muted-3);
+
+    padding-block: var(--space-5);
+  }
+
+  &Heading {
+    font-weight: var(--fontWeight-5);
+    font-size: 16px;
+  }
+  &Text {
+    font-size: var(--fontSize-1);
+    color: var(--dark-muted-1);
+  }
+}

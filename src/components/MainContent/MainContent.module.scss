@@ -1,0 +1,26 @@
+.mainContent {
+  display: grid;
+  grid-template-columns: auto minmax(200px, 300px);
+
+  gap: var(--space-5);
+
+  position: relative;
+  z-index: -1; // for box shadow of header
+
+  background: var(--white-muted-2);
+
+  padding: var(--space-5);
+}
+
+.right {
+  align-self: start;
+
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: var(--space-5);
+}
+
+.sectionHeading {
+  font-weight: 500;
+  font-size: var(--fontSize-4);
+}

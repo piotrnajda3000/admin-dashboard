@@ -1,0 +1,54 @@
+@use "../../styles/main.scss" as *;
+
+%sidebar {
+  grid-row: 1 / -1;
+
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: var(--space-6);
+
+  padding-inline: var(--space-5);
+
+  background: var(--primary);
+  color: var(--white-muted-1);
+
+  font-weight: var(--fontWeight-1);
+  font-size: var(--fontSize-4);
+
+  z-index: 2; // to be above box shadow of header
+}
+
+%logo {
+  @include horizontal-item(0px);
+
+  user-select: none;
+
+  padding-top: var(--space-6);
+
+  color: white;
+  font-weight: var(--fontWeight-6);
+  font-size: var(--fontSize-5);
+}
+
+%menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-4);
+
+  .item {
+    font-weight: var(--fontWeight-2);
+    @include horizontal-item();
+    &:hover {
+      color: var(--white-highlight);
+    }
+  }
+
+  .icon {
+    color: var(--white-muted-2);
+
+    &:hover {
+      color: white;
+    }
+  }
+}

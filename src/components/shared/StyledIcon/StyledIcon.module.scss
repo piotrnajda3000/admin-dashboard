@@ -1,0 +1,28 @@
+%shared {
+  flex-shrink: 0;
+  width: var(--fontSize-5);
+}
+
+.light {
+  @extend %shared;
+
+  color: var(--white-muted-2);
+
+  &:hover {
+    color: white;
+  }
+}
+
+.dark {
+  @extend %shared;
+
+  color: var(--icons-dark);
+
+  &:hover {
+    color: black;
+  }
+}
+
+.small {
+  width: var(--fontSize-4);
+}

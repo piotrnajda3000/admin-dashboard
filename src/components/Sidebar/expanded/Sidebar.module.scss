@@ -1,0 +1,16 @@
+@use "../../../styles/main.scss" as *;
+
+@use "../shared";
+
+.sidebar {
+  @extend %sidebar;
+  width: 250px;
+}
+
+.logo {
+  @extend %logo;
+}
+
+.menu {
+  @extend %menu;
+}

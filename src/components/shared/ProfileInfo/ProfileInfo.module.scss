@@ -1,0 +1,65 @@
+@use "../../../styles/main.scss" as *;
+
+.profileInfoHorizontal {
+  @include horizontal-item(var(--space-4));
+  .avatar {
+    @include avatar;
+  }
+  .name {
+    font-weight: var(--fontWeight-3);
+    color: var(--icons-dark);
+  }
+}
+
+.profileInfoVertical {
+  display: grid;
+  grid-template-rows: auto auto;
+
+  .avatar {
+    grid-row: 1 / -1;
+    align-self: end;
+  }
+
+  .topText {
+    align-self: end;
+  }
+
+  &.big {
+    grid-template-columns: 64px auto;
+    column-gap: var(--space-4);
+
+    .avatar {
+      @include avatar(64px);
+    }
+
+    .bottomText {
+      font-size: var(--fontSize-5);
+      font-weight: var(--fontWeight-3);
+      color: var(--dark-muted-2);
+    }
+  }
+
+  &.small {
+    grid-template-columns: var(--space-7) auto;
+    row-gap: var(--space-1);
+    column-gap: var(--space-2);
+
+    .avatar {
+      @include avatar();
+      align-self: center;
+    }
+
+    .topText,
+    .bottomText {
+      font-size: var(--fontSize-1);
+    }
+
+    .topText {
+      font-weight: var(--fontWeight-3);
+    }
+
+    .bottomText {
+      color: var(--dark-muted-2);
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@use "../../../styles/main.scss" as *;
+
+@use "../shared";
+
+.sidebar {
+  @extend %sidebar;
+  width: min-content;
+  padding-top: 9px;
+}
+
+.logo {
+  @extend %logo;
+  margin-inline: auto;
+}
+
+.menu {
+  @extend %menu;
+}

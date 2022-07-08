@@ -1,0 +1,44 @@
+@use "../../../styles/main.scss" as *;
+
+.projects {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-rows: min-content 1fr;
+}
+
+.card {
+  display: grid;
+  gap: var(--space-5);
+
+  max-width: 60ch;
+
+  background: var(--white-highlight);
+  border-left: solid 8px var(--accent);
+  border-radius: 8px;
+
+  padding: var(--space-5) var(--space-5);
+
+  &__heading {
+    padding-bottom: var(--space-1);
+    font-weight: bold;
+    font-size: var(--fontSize-3);
+  }
+
+  &__text {
+    color: var(--dark-muted-1);
+  }
+
+  @include elevation--light();
+}
+
+.cards {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(min-content, 250px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-5);
+}
+
+.icons {
+  @include horizontal-item(var(--space-3));
+  justify-self: end;
+}
