@@ -1,6 +1,8 @@
 @use "../../styles/main.scss" as *;
 
-%sidebar {
+.sidebar {
+  width: 250px;
+
   grid-row: 1 / -1;
 
   display: grid;
@@ -18,7 +20,7 @@
   z-index: 2; // to be above box shadow of header
 }
 
-%logo {
+.logo {
   @include horizontal-item(0px);
 
   user-select: none;
@@ -30,7 +32,7 @@
   font-size: var(--fontSize-5);
 }
 
-%menu {
+.menu {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
@@ -51,4 +53,64 @@
       color: white;
     }
   }
+}
+
+.lg {
+  display: none;
+}
+
+.md {
+  display: none;
+}
+
+@include lg {
+  .sidebar {
+    padding-top: 9px;
+    width: min-content;
+  }
+
+  .menu .item div {
+    display: none;
+  }
+
+  .logo {
+    display: none;
+  }
+  .logo.lg {
+    display: block;
+    margin-inline: auto;
+  }
+}
+
+@include md {
+  .md {
+    display: revert !important;
+  }
+
+  .logo {
+    @include horizontal-item();
+  }
+
+  .logo.lg {
+    display: none;
+  }
+
+  .menu .item div {
+    display: revert;
+  }
+
+  .sidebar {
+    display: none;
+    // line up with header button
+    padding-inline: clamp(var(--space-2), 3%, var(--space-6));
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.sidebar.show {
+  display: grid;
 }

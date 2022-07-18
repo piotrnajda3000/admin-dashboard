@@ -5,11 +5,14 @@ import Icon from "@mdi/react";
 import s from "./StyledIcon.module.scss";
 import clsx from "clsx";
 
-export default function StyledIcon({ path, theme, size }) {
-  const classes = clsx({
-    [s.small]: size === "small",
-    [s[theme]]: true,
-  });
+export default function StyledIcon({ path, theme, size, className, ...props }) {
+  const classes = clsx(
+    {
+      [s.small]: size === "small",
+      [s[theme]]: true,
+    },
+    className
+  );
 
-  return <Icon path={path} className={classes} />;
+  return <Icon path={path} className={classes} {...props} />;
 }

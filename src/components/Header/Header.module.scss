@@ -1,5 +1,7 @@
 @use "../../styles/main.scss" as *;
 
+@use "../shared/ProfileInfo/ProfileInfo.module.scss" as Profile;
+
 .header {
   display: grid;
   align-items: center;
@@ -59,4 +61,43 @@
   font-weight: var(--fontWeight-3);
   background: var(--accent);
   color: var(--white-highlight);
+}
+
+.md {
+  display: none !important;
+}
+
+@include md {
+  .md {
+    display: revert !important;
+  }
+  .topRight {
+    display: none;
+  }
+  .top {
+    grid-template-columns: auto 1fr auto;
+  }
+  .search {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+}
+
+@include sm-2 {
+  .header {
+    gap: var(--space-4);
+  }
+  .bottom {
+    gap: 0;
+    grid-template-columns: auto;
+    :global .profileInfoVertical {
+      display: none;
+    }
+    .projectOptions {
+      width: 100%;
+    }
+    .button {
+      text-align: center;
+      flex: 1;
+    }
+  }
 }

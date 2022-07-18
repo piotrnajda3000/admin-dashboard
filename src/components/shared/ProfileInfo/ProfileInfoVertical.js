@@ -10,7 +10,7 @@ export default function ProfileInfoVertical({ avatar, top, bottom, size }) {
   });
 
   return (
-    <div className={clsx(s.profileInfoVertical, modifiers)}>
+    <div className={clsx("profileInfoVertical", modifiers)}>
       <img className={s.avatar} src={avatar} />
       <div className={s.topText}>{top}</div>
       <div className={s.bottomText}>{bottom}</div>

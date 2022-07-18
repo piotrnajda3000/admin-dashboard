@@ -1,6 +1,8 @@
 @forward "abstracts/variables";
 @forward "abstracts/mixins";
 
+@use "abstracts/variables" as *;
+
 @forward "base.scss";
 
 #root {
@@ -10,4 +12,10 @@
   display: grid;
   grid-template-columns: min-content auto;
   grid-template-rows: auto 1fr;
+}
+
+@include md {
+  #root {
+    grid-template-columns: auto;
+  }
 }

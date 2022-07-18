@@ -2,26 +2,34 @@ import React from "react";
 
 import s from "./Header.module.scss";
 
-import { mdiBellRingOutline, mdiMagnify } from "@mdi/js";
+import { mdiBellRingOutline, mdiMagnify, mdiMenu } from "@mdi/js";
 
 import StyledIcon from "../shared/StyledIcon/StyledIcon";
 
 import ProfileInfoHorizontal from "../shared/ProfileInfo/ProfileInfoHorizontal";
 import ProfileInfoVertical from "../shared/ProfileInfo/ProfileInfoVertical";
 import profilePic1 from "../../assets/profilePic1.jpg";
+import clsx from "clsx";
 
-export default function Header() {
+export default function Header({ showSidebar }) {
   return (
     <div className={s.header}>
-      <Top />
+      <Top showSidebar={showSidebar} />
       <Bottom />
     </div>
   );
 }
 
-const Top = () => {
+const Top = ({ showSidebar }) => {
   return (
     <div className={s.top}>
+      <StyledIcon
+        path={mdiMenu}
+        theme="dark"
+        className={clsx(s.md)}
+        onClick={showSidebar}
+      />
+      <ProfileInfoHorizontal avatar={profilePic1} className={clsx(s.md)} />
       <SearchBar />
       <div className={s.topRight}>
         <StyledIcon path={mdiBellRingOutline} theme="dark" />

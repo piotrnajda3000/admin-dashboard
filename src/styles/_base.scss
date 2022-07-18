@@ -51,3 +51,7 @@ a:active {
 input {
   border: 0;
 }
+
+path {
+  pointer-events: none;
+}

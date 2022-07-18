@@ -1,25 +1,37 @@
 // Media queries
 
-:root {
-  --sm: 550px;
-  --md: 750px;
-  --lg: 905px;
-}
+$sm-xtra: 401px;
+$sm: 590px;
+$sm-2: 684px;
+$md: 750px;
+$lg: 925px;
 
-@mixin small {
-  @media only screen and (max-width: var(--sm)) {
+@mixin sm-xtra {
+  @media (max-width: $sm-xtra) {
     @content;
   }
 }
 
-@mixin medium {
-  @media only screen and (max-width: var(--md)) {
+@mixin sm {
+  @media (max-width: $sm) {
     @content;
   }
 }
 
-@mixin large {
-  @media only screen and (max-width: var(--lg)) {
+@mixin sm-2 {
+  @media (max-width: $sm-2) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: $lg) {
     @content;
   }
 }
